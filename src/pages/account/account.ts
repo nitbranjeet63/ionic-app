@@ -10,49 +10,49 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'account.html'
 })
 export class AccountPage {
-  username: string;
+  phonenumber: string;
 
   constructor(public alertCtrl: AlertController, public nav: NavController, public userData: UserData) {
 
   }
 
   ngAfterViewInit() {
-    this.getUsername();
+    this.getPhoneNumber();
   }
 
   updatePicture() {
     console.log('Clicked to update picture');
   }
 
-  // Present an alert with the current username populated
-  // clicking OK will update the username and display it
+  // Present an alert with the current phonenumber populated
+  // clicking OK will update the phonenumber and display it
   // clicking Cancel will close the alert and do nothing
-  changeUsername() {
+  changePhoneNumber() {
     let alert = this.alertCtrl.create({
-      title: 'Change Username',
+      title: 'Change Phone Number',
       buttons: [
         'Cancel'
       ]
     });
     alert.addInput({
-      name: 'username',
-      value: this.username,
-      placeholder: 'username'
+      name: 'phonenumber',
+      value: this.phonenumber,
+      placeholder: 'phonenumber'
     });
     alert.addButton({
       text: 'Ok',
       handler: (data: any) => {
-        this.userData.setUsername(data.username);
-        this.getUsername();
+        this.userData.setPhoneNumber(data.phonenumber);
+        this.getPhoneNumber();
       }
     });
 
     alert.present();
   }
 
-  getUsername() {
-    this.userData.getUsername().then((username) => {
-      this.username = username;
+  getPhoneNumber() {
+    this.userData.getPhoneNumber().then((phonenumber) => {
+      this.phonenumber = phonenumber;
     });
   }
 
