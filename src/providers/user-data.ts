@@ -30,30 +30,30 @@ export class UserData {
     }
   };
 
-  login(username: string): void {
+  login(phonenumber: string): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username);
+    this.setPhoneNumber(phonenumber);
     this.events.publish('user:login');
   };
 
-  signup(username: string): void {
+  signup(phonenumber: string): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username);
+    this.setPhoneNumber(phonenumber);
     this.events.publish('user:signup');
   };
 
   logout(): void {
     this.storage.remove(this.HAS_LOGGED_IN);
-    this.storage.remove('username');
+    this.storage.remove('phonenumber');
     this.events.publish('user:logout');
   };
 
-  setUsername(username: string): void {
-    this.storage.set('username', username);
+  setPhoneNumber(phonenumber: string): void {
+    this.storage.set('phonenumber', phonenumber);
   };
 
-  getUsername(): Promise<string> {
-    return this.storage.get('username').then((value) => {
+  getPhoneNumber(): Promise<string> {
+    return this.storage.get('phonenumber').then((value) => {
       return value;
     });
   };
