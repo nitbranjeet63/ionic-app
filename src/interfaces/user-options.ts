@@ -1,5 +1,5 @@
 
 export interface UserOptions {
-  username: string,
+  phonenumber: string,
   password: string
 }
